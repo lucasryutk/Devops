@@ -2,11 +2,10 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-#127.0.0.1:8000
-@app.get("/")
+@app.get("/endpoint1")
 async def root():
     return  {"message": "Hello World"}
 
-@app.get("/teste")
+@app.get("/endpoint2")
 async def ola():
     return  {"message": "deu certo"}
