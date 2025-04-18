@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+import random
 
 app = FastAPI()
 
@@ -9,4 +10,4 @@ async def root():
 
 @app.get("/teste")
 async def ola():
-    return  {"message": "deu certo"}
+    return  {"message": True, "num_aleatorio": random.randint(0, 100)}
