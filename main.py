@@ -10,4 +10,4 @@ async def root():
 
 @app.get("/teste")
 async def ola():
-    return  {"message": True, "num_aleatorio": random.randint(0, 100)}
+    return  {"message": True, "num_aleatorio": random.randint(0, 1000)}
