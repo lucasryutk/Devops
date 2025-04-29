@@ -1,40 +1,43 @@
 from src.main import *
 from unittest.mock import patch
+import pytest
+import pytest_asyncio
 
-
+@pytest.mark.asyncio
 def test_root():
-    result = root()
-    yield result
+    result = await root()
     assert result == {"message": "Hello World"}
 
+@pytest.mark.asyncio
 def test_funcaoteste():
     with patch('random.randint', return_value=12345):
-        result = funcaoteste()
-        yield result
+        result = await funcaoteste()
+
     assert result == {"teste": True, "num_aleatorio": 13245}
 
+@pytest.mark.asyncio
 def test_create_estudante(estudante: Estudante):
     estudante_teste = Estudante(name="Lucas", curso="ADS", ativo=False)
-    result = create_estudante(estudante_teste)
-    yield result
+    result = await create_estudante(estudante_teste)
     assert estudante_teste == result
 
+@pytest.mark.asyncio
 def test_update_estudante_negativo(id_estudante: int):
-    result = update_estudante(-5)
-    yield result
+    result = await update_estudante(-5)
     assert not result
 
+@pytest.mark.asyncio
 def test_update_estudante_positivo(id_estudante: int):
-    result = update_estudante(1)
-    yield update_estudante(1)
+    result = await update_estudante(1)
     assert not result
 
+@pytest.mark.asyncio
 def test_delete_estudante_negativo(id_estudante: int):
-    result = delete_estudante(-1)
+    result = await delete_estudante(-1)
     yield result
     assert not result
 
+@pytest.mark.asyncio
 def test_delete_estudante_positivo(id_estudante: int):
-    result = delete_estudante(-1)
-    yield result
+    result = await delete_estudante(-1)
     assert not result
